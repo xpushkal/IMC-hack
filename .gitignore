@@ -1,1 +1,11 @@
 .DS_STORE
+
+# Data files (too large for git)
+*.csv
+
+# Analysis outputs
+*_output.txt
+
+# Python cache
+__pycache__/
+*.pyc
