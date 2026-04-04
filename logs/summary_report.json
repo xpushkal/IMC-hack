@@ -1,0 +1,21 @@
+{
+  "files_analyzed": 2,
+  "combined_pnl": 1567339.5,
+  "avg_pnl_per_day": 783669.75,
+  "total_trades": 280146,
+  "avg_max_drawdown": 31.5,
+  "daily_results": [
+    {
+      "file": "Data/prices_round_0_day_-1.csv",
+      "pnl": 783230.0,
+      "trades": 140050,
+      "max_drawdown": 34.5
+    },
+    {
+      "file": "Data/prices_round_0_day_-2.csv",
+      "pnl": 784109.5,
+      "trades": 140096,
+      "max_drawdown": 28.5
+    }
+  ]
+}
