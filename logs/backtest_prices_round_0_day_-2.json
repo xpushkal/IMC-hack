@@ -56,11 +56,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -130,13 +130,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -244,11 +244,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -328,13 +328,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -406,11 +406,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -490,13 +490,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -542,11 +542,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -616,13 +616,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -704,11 +704,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -778,13 +778,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -892,11 +892,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -976,13 +976,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -1054,11 +1054,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -1138,13 +1138,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -1194,11 +1194,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 4
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -1274,13 +1274,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -1362,11 +1362,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -1436,13 +1436,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -1550,11 +1550,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -1634,13 +1634,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -1712,11 +1712,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -1796,13 +1796,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -1848,11 +1848,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -1922,13 +1922,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -2036,11 +2036,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -2120,13 +2120,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -2198,11 +2198,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -2282,13 +2282,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -2360,11 +2360,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -2444,13 +2444,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -2522,11 +2522,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -2606,13 +2606,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -2658,11 +2658,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -2732,13 +2732,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -2846,11 +2846,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -2930,13 +2930,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -2982,11 +2982,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -3056,13 +3056,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -3170,11 +3170,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -3254,13 +3254,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -3306,11 +3306,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -3380,13 +3380,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -3494,11 +3494,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -3578,13 +3578,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -3656,11 +3656,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -3740,13 +3740,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -3792,11 +3792,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -3866,13 +3866,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -3980,11 +3980,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -4064,13 +4064,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -4116,11 +4116,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -4190,13 +4190,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -4304,11 +4304,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -4388,13 +4388,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -4440,11 +4440,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -4514,13 +4514,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -4628,11 +4628,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -4712,13 +4712,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -4790,11 +4790,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -4874,13 +4874,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -4952,11 +4952,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -5036,13 +5036,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -5114,11 +5114,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -5198,13 +5198,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -5250,11 +5250,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -5324,13 +5324,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -5438,11 +5438,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -5522,13 +5522,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -5578,11 +5578,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -4
           }
         ],
@@ -5658,13 +5658,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -5772,11 +5772,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -5856,13 +5856,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -5908,11 +5908,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -5982,13 +5982,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -6096,11 +6096,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -6180,13 +6180,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -6258,11 +6258,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -6342,13 +6342,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -6394,11 +6394,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -6468,13 +6468,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -6582,11 +6582,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -6666,13 +6666,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -6718,11 +6718,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -6792,13 +6792,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -6906,11 +6906,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -6990,13 +6990,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -7042,11 +7042,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -7116,13 +7116,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -7230,11 +7230,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -7314,13 +7314,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -7392,11 +7392,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -7476,13 +7476,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -7554,11 +7554,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -7638,13 +7638,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -7716,11 +7716,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -7800,13 +7800,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -7852,11 +7852,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -7926,13 +7926,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -8040,11 +8040,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -8124,13 +8124,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -8176,11 +8176,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -8250,13 +8250,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -8364,11 +8364,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -8448,13 +8448,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -8500,11 +8500,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -8574,13 +8574,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -8688,11 +8688,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -8772,13 +8772,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -8850,11 +8850,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -8934,13 +8934,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -8986,11 +8986,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -9060,13 +9060,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -9174,11 +9174,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -9258,13 +9258,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -9310,11 +9310,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -9384,13 +9384,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -9498,11 +9498,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -9582,13 +9582,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -9634,11 +9634,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -9708,13 +9708,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -9822,11 +9822,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -9906,13 +9906,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -9984,11 +9984,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -10068,13 +10068,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -10146,11 +10146,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -10230,13 +10230,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -10308,11 +10308,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -10392,13 +10392,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -10444,11 +10444,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -10518,13 +10518,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -10632,11 +10632,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -10716,13 +10716,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -10768,11 +10768,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -10842,13 +10842,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -10956,11 +10956,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -11040,13 +11040,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -11096,11 +11096,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 4
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -11176,13 +11176,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -11290,11 +11290,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -11374,13 +11374,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -11452,11 +11452,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -11536,13 +11536,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -11588,11 +11588,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -11662,13 +11662,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -11776,11 +11776,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -11860,13 +11860,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -11912,11 +11912,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -11986,13 +11986,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -12100,11 +12100,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -12184,13 +12184,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -12236,11 +12236,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -12310,13 +12310,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -12424,11 +12424,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -12508,13 +12508,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -12586,11 +12586,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -12670,13 +12670,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -12748,11 +12748,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -12832,13 +12832,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -12910,11 +12910,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -12994,13 +12994,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -13046,11 +13046,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -13120,13 +13120,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -13234,11 +13234,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -13318,13 +13318,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -13370,11 +13370,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -13444,13 +13444,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -13558,11 +13558,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -13642,13 +13642,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -13694,11 +13694,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -13768,13 +13768,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -13882,11 +13882,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -13966,13 +13966,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -14044,11 +14044,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -14128,13 +14128,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -14180,11 +14180,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -14254,13 +14254,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -14368,11 +14368,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -14452,13 +14452,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -14504,11 +14504,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ],
@@ -14574,13 +14574,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -14682,11 +14682,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -14766,13 +14766,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -14818,11 +14818,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -14892,13 +14892,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -15006,11 +15006,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -15090,13 +15090,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -15168,11 +15168,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -15252,13 +15252,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -15330,11 +15330,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -15414,13 +15414,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -15492,11 +15492,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -15576,13 +15576,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -15628,11 +15628,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -15702,13 +15702,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -15816,11 +15816,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -15900,13 +15900,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -15952,11 +15952,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -16026,13 +16026,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -16140,11 +16140,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -16224,13 +16224,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -16276,11 +16276,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -16350,13 +16350,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -16464,11 +16464,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -16548,13 +16548,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -16626,11 +16626,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -16710,13 +16710,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -16762,11 +16762,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -16836,13 +16836,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -16950,11 +16950,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 6
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -17034,13 +17034,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -17086,11 +17086,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -17160,13 +17160,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -17274,11 +17274,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -17358,13 +17358,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -17410,11 +17410,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ],
@@ -17484,13 +17484,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         },
@@ -17598,11 +17598,11 @@
             "quantity": -1
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -6
           }
         ]
@@ -17682,13 +17682,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }
@@ -17760,11 +17760,11 @@
             "quantity": -2
           },
           {
-            "price": 9994.0,
+            "price": 9994,
             "quantity": 5
           },
           {
-            "price": 10006.0,
+            "price": 10006,
             "quantity": -5
           }
         ]
@@ -17844,13 +17844,13 @@
         },
         {
           "symbol": "EMERALDS",
-          "price": 9994.0,
+          "price": 9994,
           "quantity": 1,
           "type": "passive"
         },
         {
           "symbol": "EMERALDS",
-          "price": 10006.0,
+          "price": 10006,
           "quantity": -1,
           "type": "passive"
         }

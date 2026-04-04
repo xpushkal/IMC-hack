@@ -124,7 +124,7 @@ class Trader:
         - Dynamic inventory management
         """
         orders = []
-        F = 10000
+        F = 10000.0
 
         buy_cap = lim - pos
         sell_cap = lim + pos
