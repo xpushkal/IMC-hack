@@ -6,26 +6,24 @@ import math
 
 class Trader:
     """
-    IMC Prosperity - Round 0 - Tournament Trader v8
+    IMC Prosperity - Round 0 - Tournament Trader v9
 
-    EMERALDS: Reverted to tight continuous-skew approach (v6 style) which
-    generated 50K trades vs 39K in v7. The ±18 position "issue" was actually
-    fine — it's the backtester's passive fill simulation causing position
-    accumulation. On the real exchange with bot interaction, the tight quotes
-    at 9997/10003 get filled bidirectionally and keep position balanced.
+    EMERALDS: Log analysis showed PnL didn't start until ts=6000 (60 ticks dead).
+    Bot spread is always 9992/10008 (16 wide). Tightened to 1-tick offset from
+    fair and more aggressive fair-value taking to fill earlier and faster.
 
-    Key parameters (tuned):
-      - Base offset: 2 ticks from fair (tighter than v6's 3)
-      - Inventory shift: skew * 4 (balanced between mean-reversion and opportunity)
-      - Sizing: 0.8 skew factor (strong but not extreme)
-      - Front-loaded 60/50/100% of remaining capacity
+    Key parameters (tuned from v8 log analysis):
+      - Base offset: 1 tick from fair (was 2)
+      - Inventory shift: skew * 4
+      - Sizing: 0.8 skew factor
+      - Front-loaded 75/50/100% of remaining capacity (was 60/50/100)
+      - More aggressive at-fair taking: up to 8 units (was 4)
 
-    TOMATOES: Stronger inventory management from v7 analysis:
-      - inv_offset: skew * 3.5 (was 3.0)
-      - Emergency flatten at pos 12, target to 5 (was 14->8)
-      - Sizing skew: 0.85 factor
-      - Tighter backstop at 12 ticks (was 15)
-      - Earlier aggressive take thresholds when directional
+    TOMATOES: Log showed 94% of spreads are 13-14 ticks, so the spread<=9
+    penny-ahead logic was firing only 6% of the time. Fixed threshold to 14.
+    Also: tighter backstop (8 vs 12), earlier flatten (10 vs 12), stronger
+    inventory shift (5.0 vs 3.5), closer deep layers (2 vs 4).
+    Max drawdown was 139.66 — addressed with more aggressive position mgmt.
     """
 
     LIMITS = {"EMERALDS": 20, "TOMATOES": 20}
@@ -90,8 +88,8 @@ class Trader:
                 elif ask_p == F and buy_cap > 0:
                     if pos < 0:
                         vol = min(-od.sell_orders[ask_p], buy_cap, abs(pos))
-                    elif pos <= 5:
-                        vol = min(-od.sell_orders[ask_p], buy_cap, 4)
+                    elif pos <= 10:
+                        vol = min(-od.sell_orders[ask_p], buy_cap, 8)
                     else:
                         vol = 0
                     if vol > 0:
@@ -109,8 +107,8 @@ class Trader:
                 elif bid_p == F and sell_cap > 0:
                     if pos > 0:
                         vol = min(od.buy_orders[bid_p], sell_cap, abs(pos))
-                    elif pos >= -5:
-                        vol = min(od.buy_orders[bid_p], sell_cap, 4)
+                    elif pos >= -10:
+                        vol = min(od.buy_orders[bid_p], sell_cap, 8)
                     else:
                         vol = 0
                     if vol > 0:
@@ -125,13 +123,13 @@ class Trader:
         # Continuous inventory shift
         inv_shift = round(skew * 4)
 
-        # Tighter base: 2 ticks from fair (was 3 in v6)
-        l1_bid = F - 2 - inv_shift
-        l1_ask = F + 2 - inv_shift
-        l2_bid = F - 4 - inv_shift
-        l2_ask = F + 4 - inv_shift
-        l3_bid = F - 7 - inv_shift
-        l3_ask = F + 7 - inv_shift
+        # Tightest base: 1 tick from fair (was 2 in v8)
+        l1_bid = F - 1 - inv_shift
+        l1_ask = F + 1 - inv_shift
+        l2_bid = F - 3 - inv_shift
+        l2_ask = F + 3 - inv_shift
+        l3_bid = F - 6 - inv_shift
+        l3_ask = F + 6 - inv_shift
 
         # Safety clamps
         l1_bid = min(l1_bid, F - 1)
@@ -151,7 +149,7 @@ class Trader:
         sell_mult = max(0.1, 1.0 + skew * 0.8)
 
         levels = [
-            (l1_bid, l1_ask, 0.60),
+            (l1_bid, l1_ask, 0.75),
             (l2_bid, l2_ask, 0.50),
             (l3_bid, l3_ask, 1.00),
         ]
@@ -262,15 +260,15 @@ class Trader:
         skew = pos / lim if lim > 0 else 0
 
         # ======= PHASE 1: AGGRESSIVE TAKE =======
-        if abs_pos >= 12:
-            buy_edge = 0.3 if pos <= 0 else 2.5
-            sell_edge = 0.3 if pos >= 0 else 2.5
-        elif abs_pos >= 6:
-            buy_edge = 0.7 if pos <= 0 else 1.5
-            sell_edge = 0.7 if pos >= 0 else 1.5
+        if abs_pos >= 10:
+            buy_edge = 0.2 if pos <= 0 else 2.5
+            sell_edge = 0.2 if pos >= 0 else 2.5
+        elif abs_pos >= 5:
+            buy_edge = 0.5 if pos <= 0 else 1.5
+            sell_edge = 0.5 if pos >= 0 else 1.5
         else:
-            buy_edge = 1.0
-            sell_edge = 1.0
+            buy_edge = 0.5
+            sell_edge = 0.5
 
         for ask_p in sorted(od.sell_orders.keys()):
             edge = fair - ask_p
@@ -291,12 +289,12 @@ class Trader:
                 break
 
         # ======= PHASE 2: PASSIVE QUOTES =======
-        inv_offset = skew * 3.5
+        inv_offset = skew * 5.0
 
         base_hs = 3.0 + vol_ema * 0.4
         base_hs = max(2.5, min(base_hs, 6.0))
 
-        if spread <= 9:
+        if spread <= 14:
             q_bid = best_bid + 1
             q_ask = best_ask - 1
         else:
@@ -325,8 +323,8 @@ class Trader:
             sell_cap -= sz
 
         # ======= PHASE 3: DEEP LAYER =======
-        deep_bid = q_bid - 4
-        deep_ask = q_ask + 4
+        deep_bid = q_bid - 2
+        deep_ask = q_ask + 2
 
         deep_buy_sz = max(1, round(7 * max(0.1, 1.0 - skew * 0.85)))
         deep_sell_sz = max(1, round(7 * max(0.1, 1.0 + skew * 0.85)))
@@ -342,22 +340,22 @@ class Trader:
             sell_cap -= sz
 
         # ======= PHASE 4: EMERGENCY FLATTEN =======
-        if abs_pos >= 12:
+        if abs_pos >= 10:
             if pos > 0 and sell_cap > 0:
-                flatten = min(sell_cap, pos - 5)
+                flatten = min(sell_cap, pos - 3)
                 if flatten > 0:
                     orders.append(Order("TOMATOES", best_bid, -flatten))
                     sell_cap -= flatten
             elif pos < 0 and buy_cap > 0:
-                flatten = min(buy_cap, abs_pos - 5)
+                flatten = min(buy_cap, abs_pos - 3)
                 if flatten > 0:
                     orders.append(Order("TOMATOES", best_ask, flatten))
                     buy_cap -= flatten
 
         # ======= PHASE 5: BACKSTOP =======
         if buy_cap > 0:
-            orders.append(Order("TOMATOES", math.floor(fair - 12), buy_cap))
+            orders.append(Order("TOMATOES", math.floor(fair - 8), buy_cap))
         if sell_cap > 0:
-            orders.append(Order("TOMATOES", math.ceil(fair + 12), -sell_cap))
+            orders.append(Order("TOMATOES", math.ceil(fair + 8), -sell_cap))
 
         return orders
