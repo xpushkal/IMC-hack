@@ -6,17 +6,18 @@ import math
 
 class Trader:
     """
-    IMC Prosperity 4 - Round 1 (v12 — best ACO from v9 + best IPR from v10)
+    IMC Prosperity 4 - Round 1 (v13 — quotes moved to actual fill zone)
 
     ASH_COATED_OSMIUM (ACO) - limit 80:
-      Mean-reverting: hardcoded F=10000 IS the edge (dynamic fair kills it).
-      Strategy: v9 structure (3 layers, F±2/4/7) with skew=4, improved taking.
-      v9: 1289 (best ACO), v10: 1019, v11: 1083. Target: 1400+
+      Bot spread: 16 ticks. Bid at F-7..F-8, Ask at F+9..F+10.
+      Old quotes at F±2 were in dead zone (3.6% fill rate).
+      v13: L1 at F-5/F+7 (inside bot), L2 at F-7/F+9 (at bot), asymmetric.
+      v9: 1289, v10: 1019, v11: 1083, v12: pending. Target: 4000+
 
     INTARIAN_PEPPER_ROOT (IPR) - limit 80:
-      Deterministic linear uptrend: price(ts) = base + 0.001 * timestamp.
-      Strategy: ultra-aggressive buy to 80 ASAP, never sell below pos=70.
-      v10/v11: 7370 (optimal, keep as-is).
+      After t=10K runs at 100% efficiency (800/10K ticks = theoretical max).
+      v13: buy_edge=-20 at start to fill 80 units in first few ticks.
+      v10/v11: 7370. Target: 8000+
     """
 
     LIMITS = {
@@ -67,7 +68,7 @@ class Trader:
     def _aco(self, od: OrderDepth, pos: int, lim: int, saved: dict) -> List[Order]:
         orders = []
         P = "ASH_COATED_OSMIUM"
-        F = 10000  # HARDCODED — this IS the mean-reversion edge
+        F = 10000  # HARDCODED — mean-reversion anchor
 
         buy_cap = lim - pos
         sell_cap = lim + pos
@@ -114,27 +115,24 @@ class Trader:
                     break
 
         # ======= PHASE 2: PASSIVE MARKET MAKING =======
-        # v9's 3-layer structure proven best (1289 PnL)
+        # Bot spread: bid at F-7..F-8, ask at F+9..F+10 (asymmetric, 16 wide)
+        # OLD: L1 at F±2 → 3.6% fill. DEAD ZONE.
+        # NEW: L1 at F-5/F+7, L2 at F-7/F+9. Inside bot spread where fills happen.
         skew = pos / lim if lim > 0 else 0
-        inv_shift = round(skew * 4)  # v9=5, v10=2, v11=3, v12=4
+        inv_shift = round(skew * 2)  # reduced from 3/4 to prevent displacement
 
-        # Layer 1: tight (penny ahead of bots at 9992/10008)
-        l1_bid = F - 2 - inv_shift
-        l1_ask = F + 2 - inv_shift
-        # Layer 2: mid
-        l2_bid = F - 4 - inv_shift
-        l2_ask = F + 4 - inv_shift
-        # Layer 3: wide backstop
-        l3_bid = F - 7 - inv_shift
-        l3_ask = F + 7 - inv_shift
+        # Layer 1: inside bot spread (pennying bots by 2-3 ticks)
+        l1_bid = F - 5 - inv_shift   # inside bot bid at F-7
+        l1_ask = F + 7 - inv_shift   # inside bot ask at F+9
+        # Layer 2: at bot level (competitive)
+        l2_bid = F - 7 - inv_shift   # matching bot bid
+        l2_ask = F + 9 - inv_shift   # matching bot ask
 
         # Safety: never post bids above fair or asks below fair
         l1_bid = min(l1_bid, F - 1)
         l2_bid = min(l2_bid, F - 1)
-        l3_bid = min(l3_bid, F - 1)
         l1_ask = max(l1_ask, F + 1)
         l2_ask = max(l2_ask, F + 1)
-        l3_ask = max(l3_ask, F + 1)
 
         if l1_ask <= l1_bid:
             l1_ask = l1_bid + 1
@@ -146,9 +144,8 @@ class Trader:
         sell_mult = max(0.1, 1.0 + skew * 0.8)
 
         levels = [
-            (l1_bid, l1_ask, 0.50),
-            (l2_bid, l2_ask, 0.30),
-            (l3_bid, l3_ask, 1.00),
+            (l1_bid, l1_ask, 0.55),   # primary: inside bot spread
+            (l2_bid, l2_ask, 0.35),   # secondary: at bot level
         ]
 
         for bp, ap, frac in levels:
@@ -166,10 +163,11 @@ class Trader:
                 sell_cap -= sz
 
         # ======= PHASE 3: BACKSTOP =======
+        # Deep backstop at bot edges
         if buy_cap > 0:
-            orders.append(Order(P, F - 10, buy_cap))
+            orders.append(Order(P, F - 9, buy_cap))   # just outside bot bid
         if sell_cap > 0:
-            orders.append(Order(P, F + 10, -sell_cap))
+            orders.append(Order(P, F + 10, -sell_cap)) # matching bot ask
 
         return orders
 
@@ -179,9 +177,10 @@ class Trader:
     def _ipr(self, od: OrderDepth, pos: int, lim: int, saved: dict, ts: int) -> List[Order]:
         """
         Price model: price(ts) = base + 0.001 * ts
-        Slope confirmed at exactly 0.001 per timestamp across all 3 days.
-        v10: Ultra-aggressive buying, no selling below pos=70.
-        Expected: 80 units held for ~99K timestamps = ~7,920 XiRECs from trend alone.
+        After t=10K runs at 100% efficiency (800 XiRECs per 10K ticks).
+        v13: Market-buy all 80 units in first few ticks.
+        Every 100-tick delay costs 8 XiRECs. Paying 20 ticks premium
+        is recovered in 250 timestamps.
         """
         orders = []
         P = "INTARIAN_PEPPER_ROOT"
@@ -209,7 +208,7 @@ class Trader:
         itr = saved.get("iter", 0)
 
         # Fast warmup then slow tracking
-        alpha = 0.8 if itr < 10 else 0.01  # was 0.5/5/0.02 — faster warmup, slower track
+        alpha = 0.8 if itr < 10 else 0.01
         base_ema = alpha * detrended + (1 - alpha) * base_ema
         saved["ipr_base_ema"] = base_ema
 
@@ -220,29 +219,31 @@ class Trader:
         sell_cap = lim + pos
 
         # ======= PHASE 1: AGGRESSIVE TAKE (long-biased) =======
-        # Key insight: every timestamp held at full position earns 0.08 XiRECs.
-        # So paying 8 ticks premium to buy 500 timestamps earlier = breakeven.
-        # Be EXTREMELY aggressive buying, especially early.
+        # Every timestamp at 80 units earns 0.08 XiRECs.
+        # Paying 20 ticks premium = breakeven in 250 timestamps.
+        # Be MAXIMALLY aggressive in first iterations.
 
-        if pos < 20:
-            buy_edge = -8.0   # pay up to fair+8 — get long IMMEDIATELY
+        if itr < 5:
+            # FIRST 5 TICKS: market buy everything, pay any price
+            buy_edge = -20.0
+        elif pos < 20:
+            buy_edge = -12.0  # still extremely aggressive
         elif pos < 40:
-            buy_edge = -6.0   # still very aggressive
+            buy_edge = -8.0
         elif pos < 60:
-            buy_edge = -3.0   # moderate but willing to pay up
+            buy_edge = -4.0
         elif pos < 75:
-            buy_edge = -1.0   # near fair
+            buy_edge = -1.0
         else:
-            buy_edge = 0.5    # slight discount only when near limit
+            buy_edge = 0.5
 
         # Sell edge: NEVER sell below position 70
-        # Every unit sold costs ~13 ticks to rebuy (spread) = 1300 timestamps of trend holding
         if pos < 70:
-            sell_edge = 999.0   # effectively never sell
+            sell_edge = 999.0
         elif pos < 78:
-            sell_edge = 8.0     # only at huge premium
+            sell_edge = 8.0
         else:
-            sell_edge = 6.0     # large premium when at max
+            sell_edge = 6.0
 
         if od.sell_orders:
             for ask_p in sorted(od.sell_orders.keys()):
@@ -267,31 +268,35 @@ class Trader:
         # ======= PHASE 2: PASSIVE QUOTES (long-biased) =======
         fair_int = round(fair)
 
-        if pos < 40:
-            # Ultra-aggressive: bid near fair, ask far above
+        if itr < 5:
+            # First 5 ticks: bid at fair+5 to guarantee fills
+            bid_offset = -5   # negative = above fair (guaranteed fill)
+            ask_offset = 20   # never sell
+            bid_size = 80     # max size
+            ask_size = 0
+        elif pos < 40:
             bid_offset = 1
-            ask_offset = 12   # was 8 — push asks way out to prevent fills
-            bid_size = 40     # was 30 — maximize buy volume
-            ask_size = 3      # was 5 — minimize sell exposure
+            ask_offset = 12
+            bid_size = 40
+            ask_size = 3
         elif pos < 60:
             bid_offset = 2
-            ask_offset = 10   # was 7
-            bid_size = 30     # was 25
-            ask_size = 3      # was 8
+            ask_offset = 10
+            bid_size = 30
+            ask_size = 3
         elif pos < 70:
             bid_offset = 2
-            ask_offset = 10   # was 5 — keep asks far even here
-            bid_size = 20     # was 15
-            ask_size = 3      # was 12
+            ask_offset = 10
+            bid_size = 20
+            ask_size = 3
         elif pos < 78:
             bid_offset = 3
             ask_offset = 8
             bid_size = 10
             ask_size = 5
         else:
-            # At max: wide bids, moderate asks
             bid_offset = 5
-            ask_offset = 6    # was 4 — still not too tight
+            ask_offset = 6
             bid_size = 5
             ask_size = 10
 
@@ -306,38 +311,36 @@ class Trader:
         if q_ask <= q_bid:
             q_ask = q_bid + 1
 
-        if buy_cap > 0:
+        if buy_cap > 0 and bid_size > 0:
             sz = min(bid_size, buy_cap)
             orders.append(Order(P, q_bid, sz))
             buy_cap -= sz
 
         # Only post sell orders at high position
-        if pos >= 70 and sell_cap > 0:
+        if pos >= 70 and sell_cap > 0 and ask_size > 0:
             sz = min(ask_size, sell_cap)
             orders.append(Order(P, q_ask, -sz))
             sell_cap -= sz
 
         # ======= PHASE 3: DEEP LAYER =======
-        deep_bid = q_bid - 4   # was -3
+        deep_bid = q_bid - 4
 
         if buy_cap > 0:
-            sz = min(30, buy_cap)  # was 25 — more aggressive backstop buying
+            sz = min(30, buy_cap)
             orders.append(Order(P, deep_bid, sz))
             buy_cap -= sz
 
-        # Only post deep sells near max position
         if pos >= 75 and sell_cap > 0:
-            deep_ask = q_ask + 5  # was +4
+            deep_ask = q_ask + 5
             sz = min(5, sell_cap)
             orders.append(Order(P, deep_ask, -sz))
             sell_cap -= sz
 
         # ======= PHASE 4: BACKSTOP =======
         if buy_cap > 0:
-            orders.append(Order(P, fair_int - 10, buy_cap))  # was -8, wider to catch crashes
+            orders.append(Order(P, fair_int - 10, buy_cap))
 
-        # Only backstop sells at very high position
         if pos >= 75 and sell_cap > 0:
-            orders.append(Order(P, fair_int + 15, -sell_cap))  # was +12
+            orders.append(Order(P, fair_int + 15, -sell_cap))
 
         return orders
