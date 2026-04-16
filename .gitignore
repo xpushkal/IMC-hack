@@ -11,3 +11,12 @@ __pycache__/
 *.pyc
 .venv
 .ruff_cache/
+
+/wiki/*
+.agent/*
+/.claude/*
+/.obsidian/*
+/graphify-out/*
+log.md
+CLAUDE.md
+AGENTS.md
