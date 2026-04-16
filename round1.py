@@ -6,18 +6,21 @@ import math
 
 class Trader:
     """
-    IMC Prosperity 4 - Round 1 (v13 — quotes moved to actual fill zone)
+    IMC Prosperity 4 - Round 1 (v14 — wider taking + optimized passive levels)
 
     ASH_COATED_OSMIUM (ACO) - limit 80:
-      Bot spread: 16 ticks. Bid at F-7..F-8, Ask at F+9..F+10.
-      Old quotes at F±2 were in dead zone (3.6% fill rate).
-      v13: L1 at F-5/F+7 (inside bot), L2 at F-7/F+9 (at bot), asymmetric.
-      v9: 1289, v10: 1019, v11: 1083, v12: pending. Target: 4000+
+      Bot spread 16, bid F-7..-8, ask F+9..+10. Mid deviates >2 ticks 35% of time.
+      v13 insight: fill zone is F-5..F-7 (bids) and F+7..F+9 (asks).
+      v14: Widen aggressive taking to F+4 (buy) / F-4 (sell) to capture
+      3374 units of ask volume at F+4..F+6 that v13 missed entirely.
+      Also shift L1 to F-6/F+8 to capture the most volume.
+      v13: 2179 ACO. Target: 3500+
 
     INTARIAN_PEPPER_ROOT (IPR) - limit 80:
-      After t=10K runs at 100% efficiency (800/10K ticks = theoretical max).
-      v13: buy_edge=-20 at start to fill 80 units in first few ticks.
-      v10/v11: 7370. Target: 8000+
+      After t=10K: 100% efficiency (800/10K = theoretical max).
+      First 10K only earned 86 vs 800 theoretical (10.8% capture).
+      v14: Keep same (loading cost is ~714, already near minimum).
+      v13: 7354 IPR.
     """
 
     LIMITS = {
@@ -74,59 +77,64 @@ class Trader:
         sell_cap = lim + pos
 
         # ======= PHASE 1: AGGRESSIVE TAKE =======
-        # Buy everything below fair, sell everything above fair
+        # v13 only took asks < F. But there's 3374 ask volume at F+4..F+6
+        # that we can buy and sell passively at F+8 for +2..+4 edge.
+        # New: buy asks up to F+4 (edge vs our sell at F+8 = +4 min)
+        #      sell bids down to F-4 (edge vs our buy at F-6 = +2 min)
+
+        # Buy threshold: depends on position (more aggressive when short/flat)
+        if pos < -20:
+            buy_up_to = F + 6    # very aggressive to flatten short
+        elif pos < 20:
+            buy_up_to = F + 4    # aggressive when flat — buy at F+4, sell passive at F+8
+        elif pos < 50:
+            buy_up_to = F + 2    # moderate
+        else:
+            buy_up_to = F        # conservative when very long
+
+        # Sell threshold: depends on position
+        if pos > 20:
+            sell_down_to = F - 6  # very aggressive to flatten long
+        elif pos > -20:
+            sell_down_to = F - 4  # aggressive when flat — sell at F-4, buy passive at F-6
+        elif pos > -50:
+            sell_down_to = F - 2  # moderate
+        else:
+            sell_down_to = F      # conservative when very short
+
         if od.sell_orders:
             for ask_p in sorted(od.sell_orders.keys()):
-                if ask_p < F and buy_cap > 0:
+                if ask_p <= buy_up_to and buy_cap > 0:
                     vol = min(-od.sell_orders[ask_p], buy_cap)
                     orders.append(Order(P, ask_p, vol))
                     buy_cap -= vol
-                elif ask_p == F and buy_cap > 0:
-                    # At fair: unwind opposing position, or nibble if near flat
-                    if pos < 0:
-                        vol = min(-od.sell_orders[ask_p], buy_cap, abs(pos))
-                    elif abs(pos) <= 40:
-                        vol = min(-od.sell_orders[ask_p], buy_cap, 20)
-                    else:
-                        vol = 0
-                    if vol > 0:
-                        orders.append(Order(P, ask_p, vol))
-                        buy_cap -= vol
                 else:
                     break
 
         if od.buy_orders:
             for bid_p in sorted(od.buy_orders.keys(), reverse=True):
-                if bid_p > F and sell_cap > 0:
+                if bid_p >= sell_down_to and sell_cap > 0:
                     vol = min(od.buy_orders[bid_p], sell_cap)
                     orders.append(Order(P, bid_p, -vol))
                     sell_cap -= vol
-                elif bid_p == F and sell_cap > 0:
-                    if pos > 0:
-                        vol = min(od.buy_orders[bid_p], sell_cap, abs(pos))
-                    elif abs(pos) <= 40:
-                        vol = min(od.buy_orders[bid_p], sell_cap, 20)
-                    else:
-                        vol = 0
-                    if vol > 0:
-                        orders.append(Order(P, bid_p, -vol))
-                        sell_cap -= vol
                 else:
                     break
 
         # ======= PHASE 2: PASSIVE MARKET MAKING =======
-        # Bot spread: bid at F-7..F-8, ask at F+9..F+10 (asymmetric, 16 wide)
-        # OLD: L1 at F±2 → 3.6% fill. DEAD ZONE.
-        # NEW: L1 at F-5/F+7, L2 at F-7/F+9. Inside bot spread where fills happen.
+        # Volume distribution from logs:
+        # Bid side peak: F-7 (23%), F-8 (13%), F-6 (14%) 
+        # Ask side peak: F+9 (27%), F+10 (15%), F+8 (11.5%)
+        # L1 should be at F-6/F+8 — inside bot peak by 1-2 ticks
+        # L2 should be at F-8/F+9 — at/near bot peak
         skew = pos / lim if lim > 0 else 0
-        inv_shift = round(skew * 2)  # reduced from 3/4 to prevent displacement
+        inv_shift = round(skew * 2)
 
-        # Layer 1: inside bot spread (pennying bots by 2-3 ticks)
-        l1_bid = F - 5 - inv_shift   # inside bot bid at F-7
-        l1_ask = F + 7 - inv_shift   # inside bot ask at F+9
-        # Layer 2: at bot level (competitive)
-        l2_bid = F - 7 - inv_shift   # matching bot bid
-        l2_ask = F + 9 - inv_shift   # matching bot ask
+        # Layer 1: inside bot spread (pennying by 1 tick from peak volume)
+        l1_bid = F - 6 - inv_shift   # inside bot bid peak at F-7
+        l1_ask = F + 8 - inv_shift   # inside bot ask peak at F+9
+        # Layer 2: at bot level
+        l2_bid = F - 8 - inv_shift   # at bot bid (13.2% of time)
+        l2_ask = F + 9 - inv_shift   # at bot ask peak (26.7%)
 
         # Safety: never post bids above fair or asks below fair
         l1_bid = min(l1_bid, F - 1)
@@ -144,7 +152,7 @@ class Trader:
         sell_mult = max(0.1, 1.0 + skew * 0.8)
 
         levels = [
-            (l1_bid, l1_ask, 0.55),   # primary: inside bot spread
+            (l1_bid, l1_ask, 0.55),   # primary: inside bot peak
             (l2_bid, l2_ask, 0.35),   # secondary: at bot level
         ]
 
@@ -163,11 +171,10 @@ class Trader:
                 sell_cap -= sz
 
         # ======= PHASE 3: BACKSTOP =======
-        # Deep backstop at bot edges
         if buy_cap > 0:
-            orders.append(Order(P, F - 9, buy_cap))   # just outside bot bid
+            orders.append(Order(P, F - 10, buy_cap))
         if sell_cap > 0:
-            orders.append(Order(P, F + 10, -sell_cap)) # matching bot ask
+            orders.append(Order(P, F + 11, -sell_cap))
 
         return orders
 
@@ -177,10 +184,8 @@ class Trader:
     def _ipr(self, od: OrderDepth, pos: int, lim: int, saved: dict, ts: int) -> List[Order]:
         """
         Price model: price(ts) = base + 0.001 * ts
-        After t=10K runs at 100% efficiency (800 XiRECs per 10K ticks).
-        v13: Market-buy all 80 units in first few ticks.
-        Every 100-tick delay costs 8 XiRECs. Paying 20 ticks premium
-        is recovered in 250 timestamps.
+        After t=10K: 100% efficiency (800/10K = theoretical max).
+        v14: Same as v13 — loading cost is already near minimum.
         """
         orders = []
         P = "INTARIAN_PEPPER_ROOT"
@@ -219,15 +224,10 @@ class Trader:
         sell_cap = lim + pos
 
         # ======= PHASE 1: AGGRESSIVE TAKE (long-biased) =======
-        # Every timestamp at 80 units earns 0.08 XiRECs.
-        # Paying 20 ticks premium = breakeven in 250 timestamps.
-        # Be MAXIMALLY aggressive in first iterations.
-
         if itr < 5:
-            # FIRST 5 TICKS: market buy everything, pay any price
-            buy_edge = -20.0
+            buy_edge = -20.0   # first 5 ticks: market buy at any price
         elif pos < 20:
-            buy_edge = -12.0  # still extremely aggressive
+            buy_edge = -12.0
         elif pos < 40:
             buy_edge = -8.0
         elif pos < 60:
@@ -269,10 +269,9 @@ class Trader:
         fair_int = round(fair)
 
         if itr < 5:
-            # First 5 ticks: bid at fair+5 to guarantee fills
-            bid_offset = -5   # negative = above fair (guaranteed fill)
-            ask_offset = 20   # never sell
-            bid_size = 80     # max size
+            bid_offset = -5
+            ask_offset = 20
+            bid_size = 80
             ask_size = 0
         elif pos < 40:
             bid_offset = 1
@@ -303,7 +302,6 @@ class Trader:
         q_bid = fair_int - bid_offset
         q_ask = fair_int + ask_offset
 
-        # Don't cross the book
         if best_ask is not None and q_bid >= best_ask:
             q_bid = best_ask - 1
         if best_bid is not None and q_ask <= best_bid:
@@ -316,7 +314,6 @@ class Trader:
             orders.append(Order(P, q_bid, sz))
             buy_cap -= sz
 
-        # Only post sell orders at high position
         if pos >= 70 and sell_cap > 0 and ask_size > 0:
             sz = min(ask_size, sell_cap)
             orders.append(Order(P, q_ask, -sz))
