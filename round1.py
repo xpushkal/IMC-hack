@@ -6,17 +6,17 @@ import math
 
 class Trader:
     """
-    IMC Prosperity 4 - Round 1 (v10 — optimised from 187824 log analysis)
+    IMC Prosperity 4 - Round 1 (v11 — tuned from 188461 results)
 
     ASH_COATED_OSMIUM (ACO) - limit 80:
-      Stable mean-reverting fair value = 10000. Bot spread ~16 (9992/10008).
-      Strategy: tight market making at F±1, adaptive spread, reduced skew.
-      v9 PnL: 1289, target: 5000+
+      Mean-reverting around 10000 but mid deviates >2 ticks 32% of time.
+      Strategy: dynamic fair from book, F±2 quotes, moderate skew=3.
+      v9: 1289, v10: 1019 (regressed from F±1), target: 1500+
 
     INTARIAN_PEPPER_ROOT (IPR) - limit 80:
       Deterministic linear uptrend: price(ts) = base + 0.001 * timestamp.
       Strategy: ultra-aggressive buy to 80 ASAP, never sell below pos=70.
-      v9 PnL: 5873, target: 7500+
+      v10: 7370 (+25% vs v9), keep as-is.
     """
 
     LIMITS = {
@@ -67,19 +67,30 @@ class Trader:
     def _aco(self, od: OrderDepth, pos: int, lim: int, saved: dict) -> List[Order]:
         orders = []
         P = "ASH_COATED_OSMIUM"
-        F = 10000  # rock-stable fair value across all 3 historical days
 
         buy_cap = lim - pos
         sell_cap = lim + pos
 
-        # ---- Detect current spread regime ----
+        # ---- Dynamic fair value from book ----
         best_bid = max(od.buy_orders.keys()) if od.buy_orders else None
         best_ask = min(od.sell_orders.keys()) if od.sell_orders else None
 
         if best_bid is not None and best_ask is not None:
             spread = best_ask - best_bid
+            mid = (best_bid + best_ask) / 2.0
+        elif best_bid is not None:
+            spread = 16
+            mid = float(best_bid + 8)
+        elif best_ask is not None:
+            spread = 16
+            mid = float(best_ask - 8)
         else:
-            spread = 16  # default to normal
+            return orders
+
+        # Anchor fair toward 10000 but track the book
+        # 70% book mid, 30% anchor — prevents adverse selection when mid drifts
+        F_raw = 0.7 * mid + 0.3 * 10000
+        F = round(F_raw)
 
         # ======= PHASE 1: AGGRESSIVE TAKE =======
         # Buy everything below fair, sell everything above fair
@@ -90,13 +101,11 @@ class Trader:
                     orders.append(Order(P, ask_p, vol))
                     buy_cap -= vol
                 elif ask_p == F and buy_cap > 0:
-                    # At fair value: always take to unwind position or nibble
+                    # At fair value: take to unwind or nibble conservatively
                     if pos < 0:
-                        # Unwind short fully
                         vol = min(-od.sell_orders[ask_p], buy_cap, abs(pos))
                     else:
-                        # Nibble: aggressive volume at fair
-                        vol = min(-od.sell_orders[ask_p], buy_cap, 30)
+                        vol = min(-od.sell_orders[ask_p], buy_cap, 20)
                     if vol > 0:
                         orders.append(Order(P, ask_p, vol))
                         buy_cap -= vol
@@ -113,7 +122,7 @@ class Trader:
                     if pos > 0:
                         vol = min(od.buy_orders[bid_p], sell_cap, abs(pos))
                     else:
-                        vol = min(od.buy_orders[bid_p], sell_cap, 30)
+                        vol = min(od.buy_orders[bid_p], sell_cap, 20)
                     if vol > 0:
                         orders.append(Order(P, bid_p, -vol))
                         sell_cap -= vol
@@ -122,27 +131,27 @@ class Trader:
 
         # ======= PHASE 2: PASSIVE MARKET MAKING =======
         skew = pos / lim if lim > 0 else 0
-        inv_shift = round(skew * 2)  # was 5, reduced to prevent displacement
+        inv_shift = round(skew * 3)  # v9=5 (too wide), v10=2 (too tight), v11=3
 
         # Adaptive spread based on current book conditions
         if spread <= 8:
-            # Tight spread: be very aggressive, penny the market
+            # Tight spread: penny the market at F±1
             l1_bid = F - 1 - inv_shift
             l1_ask = F + 1 - inv_shift
             l2_bid = F - 2 - inv_shift
             l2_ask = F + 2 - inv_shift
         elif spread <= 16:
-            # Normal spread (most common): tight quotes inside bots
-            l1_bid = F - 1 - inv_shift
-            l1_ask = F + 1 - inv_shift
-            l2_bid = F - 3 - inv_shift
-            l2_ask = F + 3 - inv_shift
-        else:
-            # Wide spread: slightly wider but still inside bots
+            # Normal spread (62% of time): F±2 with L2 at F±4
             l1_bid = F - 2 - inv_shift
             l1_ask = F + 2 - inv_shift
             l2_bid = F - 4 - inv_shift
             l2_ask = F + 4 - inv_shift
+        else:
+            # Wide spread: wider quotes
+            l1_bid = F - 3 - inv_shift
+            l1_ask = F + 3 - inv_shift
+            l2_bid = F - 5 - inv_shift
+            l2_ask = F + 5 - inv_shift
 
         # Safety: never post bids above fair or asks below fair
         l1_bid = min(l1_bid, F - 1)
@@ -155,9 +164,9 @@ class Trader:
         if l2_ask <= l2_bid:
             l2_ask = l2_bid + 1
 
-        # Inventory-skewed sizing (gentle)
-        buy_mult = max(0.15, 1.0 - skew * 0.6)
-        sell_mult = max(0.15, 1.0 + skew * 0.6)
+        # Inventory-skewed sizing (moderate)
+        buy_mult = max(0.15, 1.0 - skew * 0.7)
+        sell_mult = max(0.15, 1.0 + skew * 0.7)
 
         levels = [
             (l1_bid, l1_ask, 0.50),  # tight layer: most volume here
@@ -181,9 +190,9 @@ class Trader:
         # ======= PHASE 3: BACKSTOP =======
         # Catch remaining capacity at wider levels
         if buy_cap > 0:
-            orders.append(Order(P, F - 5 - inv_shift, buy_cap))
+            orders.append(Order(P, F - 7 - inv_shift, buy_cap))
         if sell_cap > 0:
-            orders.append(Order(P, F + 5 - inv_shift, -sell_cap))
+            orders.append(Order(P, F + 7 - inv_shift, -sell_cap))
 
         return orders
 
