@@ -6,21 +6,18 @@ import math
 
 class Trader:
     """
-    IMC Prosperity 4 - Round 1 (v14 — wider taking + optimized passive levels)
+    IMC Prosperity 4 - Round 1 (v15 — max volume ACO + perfect IPR)
 
     ASH_COATED_OSMIUM (ACO) - limit 80:
-      Bot spread 16, bid F-7..-8, ask F+9..+10. Mid deviates >2 ticks 35% of time.
-      v13 insight: fill zone is F-5..F-7 (bids) and F+7..F+9 (asks).
-      v14: Widen aggressive taking to F+4 (buy) / F-4 (sell) to capture
-      3374 units of ask volume at F+4..F+6 that v13 missed entirely.
-      Also shift L1 to F-6/F+8 to capture the most volume.
-      v13: 2179 ACO. Target: 3500+
+      5,292 units of volume at F+5..F+7 were being IGNORED.
+      v15: take EVERYTHING up to passive sell level minus 1 tick.
+      Buy up to F+7 (sell passively at F+8 → +1 min edge per unit).
+      Sell down to F-5 (buy passively at F-6 → +1 min edge per unit).
+      v13: 2179. Target: 10,000+ (need 20K total to advance)
 
     INTARIAN_PEPPER_ROOT (IPR) - limit 80:
       After t=10K: 100% efficiency (800/10K = theoretical max).
-      First 10K only earned 86 vs 800 theoretical (10.8% capture).
-      v14: Keep same (loading cost is ~714, already near minimum).
-      v13: 7354 IPR.
+      v13: 7354. Near perfect, keep as-is.
     """
 
     LIMITS = {
@@ -77,30 +74,30 @@ class Trader:
         sell_cap = lim + pos
 
         # ======= PHASE 1: AGGRESSIVE TAKE =======
-        # v13 only took asks < F. But there's 3374 ask volume at F+4..F+6
-        # that we can buy and sell passively at F+8 for +2..+4 edge.
-        # New: buy asks up to F+4 (edge vs our sell at F+8 = +4 min)
-        #      sell bids down to F-4 (edge vs our buy at F-6 = +2 min)
+        # Take EVERYTHING with positive edge vs our passive quotes.
+        # Our passive sell at F+8 → buy up to F+7 = +1 min edge
+        # Our passive buy at F-6  → sell down to F-5 = +1 min edge
+        # Volume at F+5..F+7 = 5,292 units currently missed!
+        # Position-dependent: more aggressive toward flat, conservative at limits.
 
-        # Buy threshold: depends on position (more aggressive when short/flat)
-        if pos < -20:
-            buy_up_to = F + 6    # very aggressive to flatten short
-        elif pos < 20:
-            buy_up_to = F + 4    # aggressive when flat — buy at F+4, sell passive at F+8
-        elif pos < 50:
-            buy_up_to = F + 2    # moderate
+        if pos < -40:
+            buy_up_to = F + 7    # max aggressive to flatten short
+            sell_down_to = F     # don't sell when very short
+        elif pos < -10:
+            buy_up_to = F + 7    # aggressive to flatten
+            sell_down_to = F - 3
+        elif pos < 10:
+            buy_up_to = F + 7    # near flat: take everything
+            sell_down_to = F - 5
+        elif pos < 40:
+            buy_up_to = F + 5    # moderate long: still aggressive
+            sell_down_to = F - 5
+        elif pos < 60:
+            buy_up_to = F + 3    # getting full: slow buying
+            sell_down_to = F - 7  # aggressive selling to flatten
         else:
-            buy_up_to = F        # conservative when very long
-
-        # Sell threshold: depends on position
-        if pos > 20:
-            sell_down_to = F - 6  # very aggressive to flatten long
-        elif pos > -20:
-            sell_down_to = F - 4  # aggressive when flat — sell at F-4, buy passive at F-6
-        elif pos > -50:
-            sell_down_to = F - 2  # moderate
-        else:
-            sell_down_to = F      # conservative when very short
+            buy_up_to = F        # near limit: only take below fair
+            sell_down_to = F - 7  # very aggressive selling
 
         if od.sell_orders:
             for ask_p in sorted(od.sell_orders.keys()):
