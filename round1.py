@@ -6,18 +6,17 @@ import math
 
 class Trader:
     """
-    IMC Prosperity 4 - Round 1 (v15 — max volume ACO + perfect IPR)
+    IMC Prosperity 4 - Round 1 (v16 — v13 base + safe wider taking at F+3)
 
     ASH_COATED_OSMIUM (ACO) - limit 80:
-      5,292 units of volume at F+5..F+7 were being IGNORED.
-      v15: take EVERYTHING up to passive sell level minus 1 tick.
-      Buy up to F+7 (sell passively at F+8 → +1 min edge per unit).
-      Sell down to F-5 (buy passively at F-6 → +1 min edge per unit).
-      v13: 2179. Target: 10,000+ (need 20K total to advance)
+      v15 LESSON: taking at F+5..F+7 causes catastrophic inventory losses.
+      Thin edge (+1..+3) gets destroyed by mean-reversion when passive sell doesn't fill.
+      SAFE ZONE: buy up to F+3 max (edge vs F+8 sell = +5 min, survives reversion).
+      v13: 2179 (best ACO). v15: -677 (too aggressive). Target: 3000+
 
     INTARIAN_PEPPER_ROOT (IPR) - limit 80:
       After t=10K: 100% efficiency (800/10K = theoretical max).
-      v13: 7354. Near perfect, keep as-is.
+      v13: 7354. Near perfect.
     """
 
     LIMITS = {
@@ -74,30 +73,28 @@ class Trader:
         sell_cap = lim + pos
 
         # ======= PHASE 1: AGGRESSIVE TAKE =======
-        # Take EVERYTHING with positive edge vs our passive quotes.
-        # Our passive sell at F+8 → buy up to F+7 = +1 min edge
-        # Our passive buy at F-6  → sell down to F-5 = +1 min edge
-        # Volume at F+5..F+7 = 5,292 units currently missed!
-        # Position-dependent: more aggressive toward flat, conservative at limits.
+        # SAFE ZONE: buy up to F+3 max (edge vs F+8 sell = +5, survives reversion)
+        # v15 proved F+5..F+7 is DISASTER (mean reversion kills thin edge)
+        # Position-dependent thresholds for inventory management
 
         if pos < -40:
-            buy_up_to = F + 7    # max aggressive to flatten short
-            sell_down_to = F     # don't sell when very short
+            buy_up_to = F + 3    # aggressive to flatten short
+            sell_down_to = F + 1 # don't sell when very short
         elif pos < -10:
-            buy_up_to = F + 7    # aggressive to flatten
-            sell_down_to = F - 3
+            buy_up_to = F + 3    # still aggressive
+            sell_down_to = F - 2
         elif pos < 10:
-            buy_up_to = F + 7    # near flat: take everything
-            sell_down_to = F - 5
+            buy_up_to = F + 3    # near flat: take best available
+            sell_down_to = F - 3
         elif pos < 40:
-            buy_up_to = F + 5    # moderate long: still aggressive
-            sell_down_to = F - 5
+            buy_up_to = F + 2    # moderate long
+            sell_down_to = F - 3
         elif pos < 60:
-            buy_up_to = F + 3    # getting full: slow buying
-            sell_down_to = F - 7  # aggressive selling to flatten
+            buy_up_to = F + 1    # getting full
+            sell_down_to = F - 4 # aggressive flatten
         else:
-            buy_up_to = F        # near limit: only take below fair
-            sell_down_to = F - 7  # very aggressive selling
+            buy_up_to = F        # near limit: only below fair
+            sell_down_to = F - 5 # max flatten
 
         if od.sell_orders:
             for ask_p in sorted(od.sell_orders.keys()):
@@ -118,20 +115,16 @@ class Trader:
                     break
 
         # ======= PHASE 2: PASSIVE MARKET MAKING =======
-        # Volume distribution from logs:
-        # Bid side peak: F-7 (23%), F-8 (13%), F-6 (14%) 
-        # Ask side peak: F+9 (27%), F+10 (15%), F+8 (11.5%)
-        # L1 should be at F-6/F+8 — inside bot peak by 1-2 ticks
-        # L2 should be at F-8/F+9 — at/near bot peak
+        # v13 proven levels: L1 at F-6/F+8, L2 at F-8/F+9
         skew = pos / lim if lim > 0 else 0
         inv_shift = round(skew * 2)
 
-        # Layer 1: inside bot spread (pennying by 1 tick from peak volume)
-        l1_bid = F - 6 - inv_shift   # inside bot bid peak at F-7
-        l1_ask = F + 8 - inv_shift   # inside bot ask peak at F+9
+        # Layer 1: inside bot spread
+        l1_bid = F - 6 - inv_shift
+        l1_ask = F + 8 - inv_shift
         # Layer 2: at bot level
-        l2_bid = F - 8 - inv_shift   # at bot bid (13.2% of time)
-        l2_ask = F + 9 - inv_shift   # at bot ask peak (26.7%)
+        l2_bid = F - 8 - inv_shift
+        l2_ask = F + 9 - inv_shift
 
         # Safety: never post bids above fair or asks below fair
         l1_bid = min(l1_bid, F - 1)
@@ -149,8 +142,8 @@ class Trader:
         sell_mult = max(0.1, 1.0 + skew * 0.8)
 
         levels = [
-            (l1_bid, l1_ask, 0.55),   # primary: inside bot peak
-            (l2_bid, l2_ask, 0.35),   # secondary: at bot level
+            (l1_bid, l1_ask, 0.55),
+            (l2_bid, l2_ask, 0.35),
         ]
 
         for bp, ap, frac in levels:
@@ -180,9 +173,8 @@ class Trader:
     # ================================================================ #
     def _ipr(self, od: OrderDepth, pos: int, lim: int, saved: dict, ts: int) -> List[Order]:
         """
-        Price model: price(ts) = base + 0.001 * ts
         After t=10K: 100% efficiency (800/10K = theoretical max).
-        v14: Same as v13 — loading cost is already near minimum.
+        v13: 7354. Near perfect.
         """
         orders = []
         P = "INTARIAN_PEPPER_ROOT"
@@ -190,7 +182,6 @@ class Trader:
         if not od.buy_orders and not od.sell_orders:
             return orders
 
-        # Current book state
         best_bid = max(od.buy_orders.keys()) if od.buy_orders else None
         best_ask = min(od.sell_orders.keys()) if od.sell_orders else None
 
@@ -203,26 +194,22 @@ class Trader:
         else:
             return orders
 
-        # Estimate base price using detrended EMA
         detrended = mid - 0.001 * ts
-
         base_ema = saved.get("ipr_base_ema", detrended)
         itr = saved.get("iter", 0)
 
-        # Fast warmup then slow tracking
         alpha = 0.8 if itr < 10 else 0.01
         base_ema = alpha * detrended + (1 - alpha) * base_ema
         saved["ipr_base_ema"] = base_ema
 
-        # Fair value = trend-adjusted base
         fair = base_ema + 0.001 * ts
 
         buy_cap = lim - pos
         sell_cap = lim + pos
 
-        # ======= PHASE 1: AGGRESSIVE TAKE (long-biased) =======
+        # ======= PHASE 1: AGGRESSIVE TAKE =======
         if itr < 5:
-            buy_edge = -20.0   # first 5 ticks: market buy at any price
+            buy_edge = -20.0
         elif pos < 20:
             buy_edge = -12.0
         elif pos < 40:
@@ -234,7 +221,6 @@ class Trader:
         else:
             buy_edge = 0.5
 
-        # Sell edge: NEVER sell below position 70
         if pos < 70:
             sell_edge = 999.0
         elif pos < 78:
@@ -262,7 +248,7 @@ class Trader:
                 elif edge < sell_edge:
                     break
 
-        # ======= PHASE 2: PASSIVE QUOTES (long-biased) =======
+        # ======= PHASE 2: PASSIVE QUOTES =======
         fair_int = round(fair)
 
         if itr < 5:
@@ -318,7 +304,6 @@ class Trader:
 
         # ======= PHASE 3: DEEP LAYER =======
         deep_bid = q_bid - 4
-
         if buy_cap > 0:
             sz = min(30, buy_cap)
             orders.append(Order(P, deep_bid, sz))
@@ -333,7 +318,6 @@ class Trader:
         # ======= PHASE 4: BACKSTOP =======
         if buy_cap > 0:
             orders.append(Order(P, fair_int - 10, buy_cap))
-
         if pos >= 75 and sell_cap > 0:
             orders.append(Order(P, fair_int + 15, -sell_cap))
 
